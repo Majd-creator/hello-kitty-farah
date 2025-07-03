@@ -1,95 +1,124 @@
-/* Google fonts */
+/* --------------------------------------------------
+   Google fonts
+-------------------------------------------------- */
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Nunito:wght@400;600&display=swap');
 
-/* Kitty colour tokens */
+/* --------------------------------------------------
+   Kitty colour tokens
+-------------------------------------------------- */
 :root{
-  --kitty-pink:#ffbbdd;
-  --kitty-bow:#ff3366;
-  --kitty-cream:#fff8f8;
-  --kitty-shadow:rgba(0,0,0,.05);
+  /* colours */
+  --kitty-pink : #ffbbdd;
+  --kitty-bow  : #ff3366;
+  --kitty-cream: #fff8f8;
+  --kitty-shadow: rgba(0,0,0,.05);
+
+  /* wave band vars (mobile first) */
+  --wave-h : 220px;  /* visible height of the water strip           */
+  --wave-up: 370px;  /* amount to shift the 590-px SVG upward (neg.)*/
 }
 
-/* Base styles */
+/*  Desktop ≥ 992 px  -------------------------------------------- */
+@media (min-width: 992px){
+  :root{
+    --wave-h : 160px;
+    --wave-up: 310px;
+  }
+}
+
+/*  Super-tall screens (optional) -------------------------------- */
+@media (min-height: 1000px){
+  :root{
+    --wave-h : 260px;
+    --wave-up: 430px;
+  }
+}
+
+/* --------------------------------------------------
+   Base styles
+-------------------------------------------------- */
 html,body{
-  margin:0;
-  font-family:'Nunito',sans-serif;
-  background:var(--kitty-cream);
-  color:#333;
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  background: var(--kitty-cream);
+  color: #333;
 }
 
-/* ---------- HERO COUNTDOWN ---------- */
+/* --------------------------------------------------
+   HERO COUNTDOWN
+-------------------------------------------------- */
 #hero{
-  text-align:center;
-  padding:4rem 1rem 8rem;
-  position:relative;
+  text-align: center;
+  padding: 4rem 1rem calc(var(--wave-h) + 2rem);
+  position: relative;
 }
 
 .title{
-  font-size:clamp(2rem,6vw,4rem);
-  margin:0 0 1rem;
-  letter-spacing:2px;
+  font-size: clamp(2rem, 6vw, 4rem);
+  margin: 0 0 1rem;
+  letter-spacing: 2px;
 }
 
 #big-number{
-  font-family:'Baloo 2',cursive;
-  font-size:clamp(4rem,14vw,10rem);
-  color:var(--kitty-bow);
-  line-height:1;
+  font-family: 'Baloo 2', cursive;
+  font-size: clamp(4rem, 14vw, 10rem);
+  color: var(--kitty-bow);
+  line-height: 1;
 }
 
 #big-label{
-  font-size:clamp(1rem,3vw,2rem);
-  letter-spacing:2px;
-  margin-bottom:2rem;
+  font-size: clamp(1rem, 3vw, 2rem);
+  letter-spacing: 2px;
+  margin-bottom: 2rem;
 }
 
 #hero-img{
-  width:200px;
-  max-width:50vw;
-  filter:drop-shadow(0 4px 10px var(--kitty-shadow));
+  width: 200px;
+  max-width: 50vw;
+  filter: drop-shadow(0 4px 10px var(--kitty-shadow));
 }
 
-/* mini counters underneath */
+/* mini counters under hero number */
 #mini{
-  list-style:none;
-  display:flex;
-  justify-content:center;
-  gap:1.5rem;
-  padding:2rem 0 0;
-  margin:0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem 0 0;
+  margin: 0;
 }
 
 #mini span{
-  font-family:'Baloo 2',cursive;
-  font-size:2rem;
-  color:var(--kitty-bow);
+  font-family: 'Baloo 2', cursive;
+  font-size: 2rem;
+  color: var(--kitty-bow);
 }
 
 #mini small{
-  display:block;
-  font-size:.8rem;
-  text-transform:uppercase;
-  letter-spacing:1px;
-  color:#666;
+  display: block;
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #666;
 }
 
-/* ---------- ANIMATED WATER (revised) ---------- */
+/* --------------------------------------------------
+   ANIMATED WATER — responsive
+-------------------------------------------------- */
 .wave-wrap{
-    position:fixed;
-    left:0; right:0; bottom:0;
-    height:220px;   /* show a taller strip so both crests fit */
-    overflow:hidden;
-    pointer-events:none;   /* clicks pass through */
-    line-height:0;
-  }
-  
-  .wave-svg{
-    position:absolute;
-    top:-370px;     /* expose lower crest as well—adjust ±10-20 px until perfect */
-    left:0;
-    width:100%;
-    height:auto;
-    pointer-events:none;
-  }
-  
-  
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  height: var(--wave-h);
+  overflow: hidden;
+  pointer-events: none;   /* clicks pass through */
+  line-height: 0;
+}
+
+.wave-svg{
+  position: absolute;
+  top: calc(var(--wave-up) * -1); /* negative upward shift */
+  left: 0;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
