@@ -1,32 +1,39 @@
-// ---- src/js/timer.js ----
-const target = new Date("2026-02-14T00:00:00+01:00"); // Farah's birthday (edit if needed)
-const pad    = n => String(n).padStart(2,"0");
+// Farah's birthday — 22 May 2026, adjust offset if needed
+const target = new Date("2026-05-22T00:00:00+02:00");
 
-// Cache the <span> elements once
-const els = {
-  days:    document.getElementById("days"),
-  hours:   document.getElementById("hours"),
-  minutes: document.getElementById("minutes"),
-  seconds: document.getElementById("seconds")
+/* grab DOM refs once */
+const el = {
+  bigNum : document.getElementById("big-number"),
+  bigLab : document.getElementById("big-label"),
+  d      : document.getElementById("d"),
+  h      : document.getElementById("h"),
+  m      : document.getElementById("m"),
+  s      : document.getElementById("s")
 };
 
+const UNITS = [
+  {k:"d", secs:86400, label:["DAY","DAYS"]},
+  {k:"h", secs:3600 , label:["HOUR","HOURS"]},
+  {k:"m", secs:60   , label:["MIN","MINS"]},
+  {k:"s", secs:1    , label:["SEC","SECS"]}
+];
+
+const pad = n => String(n).padStart(2,"0");
+
 function tick(){
-  // ms → secs
-  let diff = Math.max(0, Math.floor((target - new Date()) / 1000));
+  let diff = Math.max(0, Math.floor((target - new Date())/1000));
 
-  const d = Math.floor(diff / 86400);
-  diff   %= 86400;
-  const h = Math.floor(diff / 3600);
-  diff   %= 3600;
-  const m = Math.floor(diff / 60);
-  const s = diff % 60;
+  UNITS.forEach(u=>{
+    const val = Math.floor(diff / u.secs);
+    diff %= u.secs;
+    el[u.k].textContent = pad(val);
+  });
 
-  els.days.textContent    = pad(d);
-  els.hours.textContent   = pad(h);
-  els.minutes.textContent = pad(m);
-  els.seconds.textContent = pad(s);
+  /* big hero number shows days */
+  const days = Number(el.d.textContent);
+  el.bigNum.textContent = days;
+  el.bigLab.textContent = days === 1 ? "DAY" : "DAYS";
 }
 
-// Initial render + 1-second interval
-tick();
-setInterval(tick, 1000);
+tick();               // first draw immediately
+setInterval(tick,1000); // then every second

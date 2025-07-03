@@ -1,13 +1,41 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <title>Hello Kitty for Farah</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- favicon for now = wave -->
+  <link rel="icon" href="/assets/wave-animated.svg">
+
+  <!-- main stylesheet -->
+  <link rel="stylesheet" href="/src/css/main.css">
+</head>
+
+<body>
+  <main id="hero">
+    <h1 class="title">COUNTDOWN</h1>
+
+    <div id="big-number">000</div>
+    <div id="big-label">DAYS</div>
+
+    <!-- Replace farah_cartoon.png with your generated PNG later -->
+    <img src="/assets/wife/farah_cartoon.png" alt="Cartoon Farah" id="hero-img">
+
+    <!-- four small counters -->
+    <ul id="mini">
+      <li><span id="d">--</span><small>Days</small></li>
+      <li><span id="h">--</span><small>Hours</small></li>
+      <li><span id="m">--</span><small>Mins</small></li>
+      <li><span id="s">--</span><small>Secs</small></li>
+    </ul>
+  </main>
+
+  <!-- animated water -->
+  <div class="wave-wrap">
+    <img src="/assets/wave-animated.svg" alt="" class="wave-svg">
+  </div>
+
+  <script type="module" src="/src/js/timer.js"></script>
+</body>
 </html>
