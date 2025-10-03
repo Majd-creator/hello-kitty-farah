@@ -1,7 +1,6 @@
 // Farah's birthday — 22 May 2026, adjust offset if needed
 const target = new Date("2026-05-22T00:00:00+02:00");
 
-/* grab DOM refs once */
 const el = {
   bigNum : document.getElementById("big-number"),
   bigLab : document.getElementById("big-label"),
@@ -29,11 +28,10 @@ function tick(){
     el[u.k].textContent = pad(val);
   });
 
-  /* big hero number shows days */
   const days = Number(el.d.textContent);
   el.bigNum.textContent = days;
   el.bigLab.textContent = days === 1 ? "DAY" : "DAYS";
 }
 
-tick();               // first draw immediately
-setInterval(tick,1000); // then every second
+tick();
+setInterval(tick,1000);
