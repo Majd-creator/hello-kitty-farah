@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Farah’s Planner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="/assets/wife/wave-animated.svg" />
+</head>
+<body>
+  <header class="topbar">
+    <a href="/" class="back">← Back</a>
+    <h1>Farah’s Planner</h1>
+  </header>
+
+  <main class="grid">
+    <!-- left: calendar -->
+    <section class="cal card">
+      <div class="cal-head">
+        <button id="prevM" aria-label="Previous month">❮</button>
+        <h2 id="calTitle">Month YYYY</h2>
+        <button id="nextM" aria-label="Next month">❯</button>
+      </div>
+      <div class="dow">Sun Mon Tue Wed Thu Fri Sat</div>
+      <div class="cal-grid" id="calGrid" role="grid" aria-label="Calendar"></div>
+    </section>
+
+    <!-- right: day view -->
+    <section class="day card">
+      <h2 id="dayTitle">Today</h2>
+
+      <form id="itemForm" class="form">
+        <div class="row">
+          <label>Subject <input required name="subject" placeholder="e.g. Biology"></label>
+          <label>Topic <input required name="topic" placeholder="e.g. Cell division"></label>
+        </div>
+
+        <div class="row">
+          <label>Start <input type="time" name="start_time"></label>
+          <label>End <input type="time" name="end_time"></label>
+          <label>Priority
+            <select name="priority">
+              <option value="low">Low</option>
+              <option value="med" selected>Medium</option>
+              <option value="high">High</option>
+            </select>
+          </label>
+        </div>
+
+        <label class="block">Notes
+          <textarea name="notes" rows="3" placeholder="Any extras she wants to remember…"></textarea>
+        </label>
+
+        <input type="hidden" name="date" id="formDate">
+        <input type="hidden" name="id" id="formId">
+        <div class="actions">
+          <button type="submit" class="primary">Save</button>
+          <button type="button" id="resetBtn">Clear</button>
+        </div>
+      </form>
+
+      <ul id="list" class="list" aria-live="polite"></ul>
+    </section>
+  </main>
+
+  <div class="wave-wrap"><img src="/assets/wife/wave-animated.svg" class="wave-svg" alt=""></div>
+
+  <!-- Vite will bundle /src/js/planner.js and inject CSS it imports -->
+  <script type="module" src="/src/js/planner.js"></script>
+</body>
+</html>

@@ -1,45 +1,28 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   <title>Hello Kitty for Farah</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- favicon for now = wave -->
-  <link rel="icon" href="/assets/wave-animated-sWp8J0Md.svg">
-
-  <!-- main stylesheet -->
-  <link rel="stylesheet" href="/main.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="/assets/wife/wave-animated.svg" />
 </head>
-
 <body>
   <main id="hero">
     <h1 class="title">COUNTDOWN</h1>
-
     <div id="big-number">000</div>
     <div id="big-label">DAYS</div>
-
-    <img src="/assets/farah_cartoon-Bx8YTq-K.png" alt="Cartoon Farah" id="hero-img">
-
+    <img src="/assets/wife/farah_cartoon.png" alt="Cartoon Farah" id="hero-img" />
     <ul id="mini">
       <li><span id="d">--</span><small>Days</small></li>
       <li><span id="h">--</span><small>Hours</small></li>
       <li><span id="m">--</span><small>Mins</small></li>
       <li><span id="s">--</span><small>Secs</small></li>
     </ul>
-
-    <!-- enter button -->
-    <p style="margin-top:2rem">
-      <a class="enter-btn" href="/planner.html">Enter →</a>
-    </p>
+    <p style="margin-top:2rem"><a class="enter-btn" href="/planner.html">Enter →</a></p>
   </main>
+  <div class="wave-wrap"><img src="/assets/wife/wave-animated.svg" alt="" class="wave-svg" /></div>
 
-  <!-- animated water -->
-  <div class="wave-wrap">
-    <img src="/assets/wave-animated-sWp8J0Md.svg" alt="" class="wave-svg">
-  </div>
-
-  <!-- countdown script -->
-  <script src="/timer.js"></script>
+  <!-- Vite will replace this with hashed assets in dist -->
+  <script type="module" src="/src/js/home.js"></script>
 </body>
 </html>

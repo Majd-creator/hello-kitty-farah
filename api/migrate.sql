@@ -1,0 +1,14 @@
+CREATE TABLE IF NOT EXISTS planner_items (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  date DATE NOT NULL,
+  subject VARCHAR(100) NOT NULL,
+  topic VARCHAR(200) NOT NULL,
+  notes TEXT NULL,
+  start_time TIME NULL,
+  end_time TIME NULL,
+  priority ENUM('low','med','high') NOT NULL DEFAULT 'med',
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_date (date),
+  INDEX idx_priority (priority)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
