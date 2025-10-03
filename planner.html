@@ -5,6 +5,7 @@
   <title>Farah’s Planner</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" href="/assets/wife/wave-animated.svg" />
+  <link rel="stylesheet" href="/src/css/planner.css"><!-- <- note /src/css -->
 </head>
 <body>
   <header class="topbar">
@@ -13,18 +14,16 @@
   </header>
 
   <main class="grid">
-    <!-- left: calendar -->
     <section class="cal card">
       <div class="cal-head">
-        <button id="prevM" aria-label="Previous month">❮</button>
+        <button id="prevM">❮</button>
         <h2 id="calTitle">Month YYYY</h2>
-        <button id="nextM" aria-label="Next month">❯</button>
+        <button id="nextM">❯</button>
       </div>
       <div class="dow">Sun Mon Tue Wed Thu Fri Sat</div>
-      <div class="cal-grid" id="calGrid" role="grid" aria-label="Calendar"></div>
+      <div class="cal-grid" id="calGrid"></div>
     </section>
 
-    <!-- right: day view -->
     <section class="day card">
       <h2 id="dayTitle">Today</h2>
 
@@ -64,7 +63,6 @@
 
   <div class="wave-wrap"><img src="/assets/wife/wave-animated.svg" class="wave-svg" alt=""></div>
 
-  <!-- Vite will bundle /src/js/planner.js and inject CSS it imports -->
-  <script type="module" src="/src/js/planner.js"></script>
+  <script src="/src/js/planner.js"></script><!-- <- note /src/js -->
 </body>
 </html>
